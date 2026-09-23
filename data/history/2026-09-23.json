@@ -1,0 +1,969 @@
+{
+  "meta": {
+    "generated_at": "2026-09-23T13:18:36",
+    "run_date": "2026-09-23",
+    "sources": [
+      "EU-Startups",
+      "Tech.eu",
+      "Sifted"
+    ],
+    "fetch_errors": [],
+    "real": true,
+    "notes": [
+      "Real data fetched live from the sources listed above. No synthetic or fabricated deals in this file.",
+      "This does not read from or write to Affinity, Notion, Box or Slack at runtime."
+    ]
+  },
+  "stats": {
+    "scanned": 54,
+    "in_scope": 4,
+    "excluded_sector": 8,
+    "excluded_stage": 10,
+    "excluded_not_funding": 32,
+    "new_today": 0
+  },
+  "gaps": [
+    {
+      "name": "PitchBook",
+      "status": "not connected",
+      "why": "Needs a paid PitchBook API/export license. Motive already has a PitchBook seat (used in the weekly mv-deal-digest skill) but this MVP does not use it, to keep everything local and credential-free."
+    },
+    {
+      "name": "Crunchbase",
+      "status": "not connected",
+      "why": "Needs a Crunchbase API key (paid tier for bulk/recent-rounds access)."
+    },
+    {
+      "name": "LinkedIn",
+      "status": "intentionally not implemented",
+      "why": "Automated scraping of LinkedIn violates its Terms of Service. A compliant path would be LinkedIn's official Talent/Sales Navigator exports (manual) or a licensed data vendor such as Harmonic. Not built here; flagging so it isn't mistaken for an oversight."
+    },
+    {
+      "name": "FinSMEs",
+      "status": "blocked",
+      "why": "Feed returns HTTP 403 from this environment (bot protection). May work from a different network/IP; worth re-testing."
+    },
+    {
+      "name": "TechFundingNews",
+      "status": "blocked",
+      "why": "Feed returns HTTP 403 from this environment (bot protection)."
+    }
+  ],
+  "deals": [],
+  "all_classified": [
+    {
+      "title": "Expanding to the US? What European founders should prepare first (Sponsored)",
+      "link": "https://www.eu-startups.com/2026/09/expanding-to-the-us-what-european-founders-should-prepare-first-sponsored/",
+      "summary": "The question of expanding to the US often comes up early, while the team is still raising seed capital and still arguing about product-market fit at home. What makes it expensive is rarely the answer. It is the order. Customers, founder presence, immigration, fundraising, structure, banking and the evidence file all wait on each other. [\u2026] The post Expanding to the US? What European founders should prepare first (Sponsored) appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 14:32:42 +0000",
+      "categories": [
+        "Know-How",
+        "Other Stuff",
+        "Sponsored",
+        "founder advice",
+        "Index Ventures",
+        "US visa"
+      ],
+      "source": "EU-Startups",
+      "sectors": [
+        "Fintech"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Expanding to the US? What European founders should prepare f",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "EU and EIB launch launch institutional investor pact to tackle Europe\u2019s scale-up funding gap",
+      "link": "https://www.eu-startups.com/2026/09/eu-and-eib-launch-launch-institutional-investor-pact-to-tackle-europes-scale-up-funding-gap/",
+      "summary": "The European Commission and the European Investment Bank (EIB) Group have launched the European Institutional Investors Pact (EIIP), a new voluntary framework aimed at channelling more long-term institutional capital into Europe\u2019s technology and scale-up ecosystem. The Pact was unveiled at the TechEU Equity Summit in Luxembourg, with thirteen institutional investors already signalling their intention to [\u2026] The post EU and EIB launch launch institutional investor pact to tackle Europe\u2019s scale-up funding gap appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 10:32:21 +0000",
+      "categories": [
+        "Funding",
+        "Ekaterina Zaharieva",
+        "European Commission",
+        "European Institutional Investors Pact (EIIP)",
+        "European Investment Bank (EIB)",
+        "European Tech Champions Initiative",
+        "Nadia Calvi\u00f1o",
+        "Scaleup Europe Fund",
+        "TechEU Equity Summit",
+        "Ursula von der Leyen"
+      ],
+      "source": "EU-Startups",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "EU and EIB launch launch institutional investor pact to tack",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "The EU-Startups Podcast | Interview with Andreas Flodstr\u00f6m, co-founder of Varangians",
+      "link": "https://www.eu-startups.com/2026/09/the-eu-startups-podcast-interview-with-andreas-flodstrom-co-founder-varangians/",
+      "summary": "Join us for a conversation with Andreas Flodstr\u00f6m, co-founder and chairman of Varangians, as we explore the journey that led him from building the Swedish-Ukrainian tech ecosystem Beetroot to investing in Ukraine\u2019s DefenceTech sector. Varangians is a DefenceTech-focused investment fund backing Ukrainian technologies developed and tested in demanding frontline conditions. With more than \u20ac10 million [\u2026] The post The EU-Startups Podcast | Interview with Andreas Flodstr\u00f6m, co-founder of Varangians appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 08:55:28 +0000",
+      "categories": [
+        "EU-Startups Podcast",
+        "Interviews",
+        "Andreas Flodstr\u00f6m",
+        "DefenceTech",
+        "dual-use technologies",
+        "Varangians"
+      ],
+      "source": "EU-Startups",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "The EU-Startups Podcast | Interview with Andreas Flodstr\u00f6m, ",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Stockholm\u2019s Spiich raises \u20ac3 million to let AI handle admin work while sales teams focus on customers",
+      "link": "https://www.eu-startups.com/2026/09/stockholms-spiich-raises-e3-million-to-let-ai-handle-admin-work-while-sales-teams-focus-on-customers/",
+      "summary": "Spiich, a Stockholm-based AI sales agent startup, has raised a \u20ac3 million Seed round. This announcement comes ten months after the company raised a \u20ac600k pre-Seed round, bringing its total funding to \u20ac3.6 million. The funding round was led by Ugly Duckling Ventures, a Copenhagen-based venture firm backing Nordic B2B software and technology companies. The [\u2026] The post Stockholm\u2019s Spiich raises \u20ac3 million to let AI handle admin work while sales teams focus on customers appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 08:26:49 +0000",
+      "categories": [
+        "Funding",
+        "Sweden Startups",
+        "Alliance VC",
+        "Ampli Ventures",
+        "Cherry Ventures",
+        "CRM",
+        "Dennis Hadzialic",
+        "Johan Torssell",
+        "Louise Lachmann",
+        "sales",
+        "Spiich Labs",
+        "ugly duckling ventures"
+      ],
+      "source": "EU-Startups",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "pre-seed",
+      "country": "Sweden",
+      "company_guess": "Stockholm\u2019s Spiich raises \u20ac3 million to let AI handle admin ",
+      "decision": "in_scope"
+    },
+    {
+      "title": "Germany\u2019s SPRIND and the Netherlands\u2019 NADI launch \u20ac40 million challenge to fast-track European AI chip design",
+      "link": "https://www.eu-startups.com/2026/09/germanys-sprind-and-the-netherlands-nadi-launch-e40-million-challenge-to-fast-track-european-ai-chip-design/",
+      "summary": "Germany\u2019s Federal Agency for Breakthrough Innovation (SPRIND) and its Dutch counterpart, the National Agency for Disruptive Innovation (NADI), have launched a joint \u20ac40 million programme to fund radical innovations in pan-European chip design. Announced today, the AI-Native Chip Design Challenge marks the first joint-funding initiative between SPRIND and NADI. It aims to cut chip development [\u2026] The post Germany\u2019s SPRIND and the Netherlands\u2019 NADI launch \u20ac40 million challenge to fast-track European AI chip design appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 07:20:28 +0000",
+      "categories": [
+        "Funding",
+        "ASML",
+        "Beau Anne-Chilla",
+        "deeptech",
+        "German Federal Agency for Breakthrough Innovation (SPRIND)",
+        "Heleen Herbert",
+        "Jano Costard",
+        "Jelle Prins",
+        "National Agency for Disruptive Innovation (NADI)",
+        "Vinnova"
+      ],
+      "source": "EU-Startups",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "unclear",
+      "country": "Germany",
+      "company_guess": "Germany\u2019s SPRIND and the Netherlands\u2019 NADI launch \u20ac40 millio",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "Berlin-based mika raises \u20ac6 million to scale its AI-native alternative to traditional tax firms",
+      "link": "https://www.eu-startups.com/2026/09/berlin-based-mika-raises-e6-million-to-scale-its-ai-native-alternative-to-traditional-tax-firms/",
+      "summary": "mika, a Berlin-based vertical AI startup building an AI-native alternative to the traditional tax firm for Germany\u2019s small limited companies (GmbHs and UGs), has raised \u20ac6 million in a Seed funding round to support growth and the further development of the platform. The round was led by Smedvig Ventures, with participation from the Basel-based family [\u2026] The post Berlin-based mika raises \u20ac6 million to scale its AI-native alternative to traditional tax firms appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 07:00:40 +0000",
+      "categories": [
+        "Funding",
+        "Germany-Startups",
+        "Agnieszka Walorska",
+        "Dennis Bemmann",
+        "dutch founders fund",
+        "Freddie Kalfayan",
+        "Henry M\u00fcssemann",
+        "Johannes Ditterich",
+        "KEEN Venture Partners",
+        "Luke Linnekuhle",
+        "Martina Pfeifer",
+        "Michael Brehm",
+        "mika",
+        "Samen Slimmer Alliance",
+        "smedvig ventures",
+        "Wecken & Cie"
+      ],
+      "source": "EU-Startups",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "seed",
+      "country": "Germany",
+      "company_guess": "Berlin-based mika raises \u20ac6 million to scale its AI-native a",
+      "decision": "in_scope"
+    },
+    {
+      "title": "The companies that were never fundable are now buildable",
+      "link": "https://www.eu-startups.com/2026/09/the-companies-that-were-never-fundable-are-now-buildable/",
+      "summary": "Ask a European founder how the company is going and you\u2019ll usually hear a number of answers. Ask an investor how a portfolio company is progressing and headcount will often be among the first three metrics. For thirty years, that shorthand worked because software output was closely tied to the number of people building it. [\u2026] The post The companies that were never fundable are now buildable appeared first on EU-Startups .",
+      "published": "Tue, 22 Sep 2026 13:33:15 +0000",
+      "categories": [
+        "Know-How",
+        "Other Stuff",
+        "AI",
+        "startup advice"
+      ],
+      "source": "EU-Startups",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "The companies that were never fundable are now buildable",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Helsinki\u2019s Verda becomes Europe\u2019s latest unicorn after raising \u20ac164.8 million to scale its full-stack AI cloud",
+      "link": "https://www.eu-startups.com/2026/09/helsinkis-verda-becomes-europes-latest-unicorn-after-raising-e164-8-million-to-scale-its-full-stack-ai-cloud/",
+      "summary": "Verda (formerly DataCrunch), a Helsinki-based AI infrastructure company, announced today that it has raised \u20ac164.8 million ($189 million) in fresh funding to scale its full-stack AI cloud. With this funding, the company has become Europe\u2019s latest unicorn. The financing includes an oversubscribed Series B led by Emergence Capital, plus additional investment. Investors participating in the [\u2026] The post Helsinki\u2019s Verda becomes Europe\u2019s latest unicorn after raising \u20ac164.8 million to scale its full-stack AI cloud appeared first on EU-Startups .",
+      "published": "Tue, 22 Sep 2026 10:29:30 +0000",
+      "categories": [
+        "Finland-Startups",
+        "France-Startups",
+        "6 degrees capital",
+        "byFounders",
+        "Emergence Capital",
+        "Finnish Industry Investment (TESI)",
+        "Joe Floyd",
+        "Lifeline Ventures",
+        "Mark Saroufim",
+        "MUFG",
+        "Nordic Investment Bank",
+        "Ola T\u00f8rudbakken",
+        "Ruben Bryon",
+        "startup unicorn",
+        "Supermicro",
+        "Verda"
+      ],
+      "source": "EU-Startups",
+      "sectors": [
+        "AI",
+        "Compute"
+      ],
+      "stage": "series a+",
+      "country": "Finland",
+      "company_guess": "Helsinki\u2019s Verda becomes Europe\u2019s latest unicorn after raisi",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "10 European funding vehicles dedicated to women founders",
+      "link": "https://www.eu-startups.com/2026/09/10-european-funding-vehicles-dedicated-to-woman-founders/",
+      "summary": "Europe\u2019s startup ecosystem has a stubborn funding problem. Women are building companies, but investment is still overwhelmingly flowing elsewhere. However, a 2026 study has shown that in 2025, all-female founding teams received just 2.5% of equity investment in Europe, while mixed-gender teams received less than 10%, meaning the vast majority (~87.5%) is directed to male-founded [\u2026] The post 10 European funding vehicles dedicated to women founders appeared first on EU-Startups .",
+      "published": "Tue, 22 Sep 2026 09:18:52 +0000",
+      "categories": [
+        "Know-How",
+        "Other Stuff",
+        "Ar\u0101ya Ventures",
+        "Borski Fund",
+        "CapitalT",
+        "fund f",
+        "Impact Shakers",
+        "Merian Ventures",
+        "Revaia",
+        "sie ventures",
+        "SISTAFUND",
+        "Unconventional Ventures"
+      ],
+      "source": "EU-Startups",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "10 European funding vehicles dedicated to women founders",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Besan\u00e7on-based Lightspring raises over \u20ac3.5 million to industrialise photonic chip packaging",
+      "link": "https://www.eu-startups.com/2026/09/besancon-based-lightspring-raises-over-e3-5-million-to-industrialise-photonic-chip-packaging/",
+      "summary": "Lightspring, a Besan\u00e7on-based DeepTech startup that designs and manufactures the optical interfaces of photonic integrated circuits, today announced the close of a \u20ac3.1 million Seed round to tackle optical packaging, which today accounts for half the cost of a photonic chip. The round was led by Atlantic and OVNI Capital, with participation from Concept Ventures, [\u2026] The post Besan\u00e7on-based Lightspring raises over \u20ac3.5 million to industrialise photonic chip packaging appeared first on EU-Startups .",
+      "published": "Tue, 22 Sep 2026 08:21:24 +0000",
+      "categories": [
+        "France-Startups",
+        "Funding",
+        "3D lithography",
+        "Adri\u00e0 Grabulosa",
+        "Atlantic",
+        "concept ventures",
+        "Daniel Brunner",
+        "deeptech",
+        "Gr\u00e9goire Bonnat",
+        "i-Lab",
+        "iXcore",
+        "Lightspring",
+        "ovni capital",
+        "Photonic Integrated Circuits",
+        "Photonics",
+        "plug and play",
+        "Quentin Calleja"
+      ],
+      "source": "EU-Startups",
+      "sectors": [],
+      "stage": "seed",
+      "country": "Europe (unspecified)",
+      "company_guess": "Besan\u00e7on-based Lightspring",
+      "decision": "excluded_sector"
+    },
+    {
+      "title": "Bird raises $450M in debt, headcount cut from 1,000 peak to 120",
+      "link": "https://tech.eu/2026/09/23/bird-raises-450m-in-debt-headcount-cut-from-1000-to-120/",
+      "summary": "Bird, the business communications platform once seen as a European rival to the US's Twilio, has raised $450m in debt financing, as it underscored its repositioning as an AI business, a shift which ha...",
+      "published": "Wed, 23 Sep 2026 14:00:00 +0000",
+      "categories": [
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "unclear",
+      "country": "Europe (unspecified)",
+      "company_guess": "Bird",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "Anthropic and Nvidia back Basecamp Research in $140M Series C",
+      "link": "https://tech.eu/2026/09/23/anthropic-and-nvidia-back-basecamp-research-in-140m-series-c/",
+      "summary": "A UK life sciences startup using AI to develop new medicines faster to treat diseases has raised $140m in funding, in an investmentround featuring AI powerhouses Nvidia and new investor Anthropic. Bas...",
+      "published": "Wed, 23 Sep 2026 13:00:00 +0000",
+      "categories": [
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "series a+",
+      "country": "Europe (unspecified)",
+      "company_guess": "Anthropic and Nvidia back Basecamp Research in $140M Series ",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "London traveltech Stasher secures \u00a33M for global expansion",
+      "link": "https://tech.eu/2026/09/23/london-traveltech-stasher-secures-ps3m-for-global-expansion/",
+      "summary": "London-founded traveltech companyStasher has secured \u00a33 million in new funding to expand its global luggagestorage marketplace and smart locker network. The funding comprisesapproximately \u00a32 million i...",
+      "published": "Wed, 23 Sep 2026 12:36:44 +0000",
+      "categories": [
+        "Traveltech"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "unclear",
+      "country": "UK",
+      "company_guess": "London traveltech Stasher secures \u00a33M for global expansion",
+      "decision": "excluded_sector"
+    },
+    {
+      "title": "Connect Ventures announces first close of $80M Fund V to back Europe's technical founders",
+      "link": "https://tech.eu/2026/09/23/connect-ventures-announces-first-close-of-80m-fund-v-to-back-europes-technical-founders/",
+      "summary": "Connect Ventures has announced the first $55 million close ofits $80 million fifth fund, which will invest in early-stage technologycompanies across Europe. The fund is anchored by British Business Ba...",
+      "published": "Wed, 23 Sep 2026 12:10:32 +0000",
+      "categories": [
+        "VC Fund"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Connect Ventures announces first close of $80M Fund V to bac",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "DiffuseDrive is filling the data gaps holding back Physical AI",
+      "link": "https://tech.eu/2026/09/23/diffusedrive-is-filling-the-data-gaps-holding-back-physical-ai/",
+      "summary": "Training AI to operate in the physical world requires enormous amounts of data, but many situations autonomous systems need to recognise are rare, dangerous, or hard to capture in the real world. Hung...",
+      "published": "Wed, 23 Sep 2026 12:00:00 +0000",
+      "categories": [
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "DiffuseDrive is filling the data gaps holding back Physical ",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "TEKEVER raises $580M Series D at $6.4B valuation",
+      "link": "https://tech.eu/2026/09/23/tekever-raises-580m-series-d-at-6-4b-valuation/",
+      "summary": "TEKEVER, provider of AI-powered autonomous systems, today announced the first close of its $580 million Series D financing, valuing the company at S$6.4 billion.TEKEVER is a Portuguese-founded defence...",
+      "published": "Wed, 23 Sep 2026 09:29:08 +0000",
+      "categories": [
+        "Defencetech"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "series a+",
+      "country": "Europe (unspecified)",
+      "company_guess": "TEKEVER",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "StandardX launches with \u00a310M to expand isotope production for medicine and fusion",
+      "link": "https://tech.eu/2026/09/23/standardx-launches-with-ps10m-to-expand-isotope-production-for-medicine-and-fusion/",
+      "summary": "Deeptech company StandardX has raised \u00a310million in seed funding to develop its accelerator-based isotope refinery andincrease production of rare isotopes used in medicine and energy. The round wasled...",
+      "published": "Wed, 23 Sep 2026 08:00:00 +0000",
+      "categories": [
+        "Deeptech"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "seed",
+      "country": "Europe (unspecified)",
+      "company_guess": "StandardX launches with \u00a310M to expand isotope production fo",
+      "decision": "excluded_sector"
+    },
+    {
+      "title": "German AI startup mika raises \u20ac6M to simplify accounting and tax for SMEs",
+      "link": "https://tech.eu/2026/09/23/german-ai-startup-mika-raises-eur6m-to-simplify-accounting-and-tax-for-smes/",
+      "summary": "Berlin-basedvertical AI startup mika has raised \u20ac6 million in a seed round led bypan-European investor Smedvig Ventures. Basel-based family office Wecken &Cie. (Care4 AG) also participated, alongs...",
+      "published": "Wed, 23 Sep 2026 07:15:00 +0000",
+      "categories": [
+        "Fintech",
+        "Artificial Intelligence",
+        "SaaS"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "seed",
+      "country": "Germany",
+      "company_guess": "German AI startup mika raises \u20ac6M to simplify accounting and",
+      "decision": "in_scope"
+    },
+    {
+      "title": "Palma.ai raises $1.8M to bring governed AI agents to more enterprises",
+      "link": "https://tech.eu/2026/09/23/palmaai-raises-18m-to-bring-governed-ai-agents-to-more-enterprises/",
+      "summary": "Palma.ai, an enterprise platform for governing AI agents atruntime, has raised $1.8 million in pre-seed funding. The round was led byD11Z, with participation from Plug and Play Ventures, Deel, Scale N...",
+      "published": "Wed, 23 Sep 2026 07:09:34 +0000",
+      "categories": [
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "pre-seed",
+      "country": "Europe (unspecified)",
+      "company_guess": "Palma.ai",
+      "decision": "in_scope"
+    },
+    {
+      "title": "F13 emerges from stealth with $5M for vector graphics AI",
+      "link": "https://tech.eu/2026/09/23/f13-emerges-from-stealth-with-5m-for-vector-graphics-ai/",
+      "summary": "F13, an AI company developingfoundation models for generating vector graphics, has emerged from stealth with$5 million in pre-seed funding. The round was led by Credo Ventures and Point Nine Capital, ...",
+      "published": "Wed, 23 Sep 2026 07:00:00 +0000",
+      "categories": [
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "F13 emerges from stealth with $5M for vector graphics AI",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "CIOC Energy secures \u20ac3M for solar and battery optimisation",
+      "link": "https://tech.eu/2026/09/23/cioc-energy-secures-eur3m-for-solar-and-battery-optimisation/",
+      "summary": "Belgian energyoptimisation company CIOC Energy has raised \u20ac3 million from renewable energydeveloper CleverNett, which has taken a minority stake in the company. CIOCEnergy will remain independent.Foun...",
+      "published": "Wed, 23 Sep 2026 06:00:00 +0000",
+      "categories": [
+        "Energy"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "unclear",
+      "country": "Europe (unspecified)",
+      "company_guess": "CIOC Energy",
+      "decision": "excluded_sector"
+    },
+    {
+      "title": "SPRIND and NADI launch \u20ac40M challenge to reinvent European chip design",
+      "link": "https://tech.eu/2026/09/23/sprind-and-nadi-launch-eur40m-challenge-to-reinvent-european-chip-design/",
+      "summary": "SPRIND, Germany\u2019s Federal Agency for Breakthrough Innovation, and NADI, the Dutch National Agency for Disruptive Innovation and SPRIND\u2019s emergent Dutch counterpart, today launch a programme committing...",
+      "published": "Wed, 23 Sep 2026 06:00:00 +0000",
+      "categories": [
+        "Hardware",
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Germany",
+      "company_guess": "SPRIND and NADI launch \u20ac40M challenge to reinvent European c",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Noxtua raises more than \u20ac100M as C.H.BECK takes majority stake German legaltech",
+      "link": "https://tech.eu/2026/09/23/noxtua-raises-more-than-eur100m-as-chbeck-takes-majority-stake-german-legaltech/",
+      "summary": "Noxtua has closed its Series C funding round totaling more than \u20ac100 million. Founded in Berlin in 2017 and spun out of research at Oxford University and Imperial College London, the scale-up launched...",
+      "published": "Wed, 23 Sep 2026 04:00:00 +0000",
+      "categories": [
+        "Legaltech"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "series a+",
+      "country": "UK",
+      "company_guess": "Noxtua",
+      "decision": "excluded_sector"
+    },
+    {
+      "title": "NATO Innovation Fund co-leads \u20ac11M investment in Swedish defence tech outfit Terasi",
+      "link": "https://tech.eu/2026/09/22/nato-innovation-fund-co-leads-eur11m-investment-in-defencetech-outfit-terasi/",
+      "summary": "Stockholm-based defence startup Terasi has wonan \u20ac11 million seed investment, co-led by the NATO Innovation Fund, thestartup said today.Terasi builds communication technology geared towardsthe battlef...",
+      "published": "Tue, 22 Sep 2026 14:31:00 +0000",
+      "categories": [
+        "Defencetech"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Sweden",
+      "company_guess": "NATO Innovation Fund co-leads \u20ac11M investment in Swedish def",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Plug and Play Tirana Expo 2026: Silicon Valley meets Balkans [Sponsored]",
+      "link": "https://tech.eu/2026/09/22/plug-and-play-tirana-expo-2026-silicon-valley-meets-balkans/",
+      "summary": "On October 7\u20138, 2026, Plug and Play Tirana Expo returns to the Pyramid of Tirana, bringing together startups, international investors, corporate leaders, founders and innovation experts from across Eu...",
+      "published": "Tue, 22 Sep 2026 08:11:11 +0000",
+      "categories": [
+        "General"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Plug and Play Tirana Expo 2026: Silicon Valley meets Balkans",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Verda raises $189M to advance its AI cloud and expand compute capacity",
+      "link": "https://tech.eu/2026/09/22/verda-raises-189m-to-advance-its-ai-cloud-and-expand-compute-capacity/",
+      "summary": "Europeantechnology company Verda has raised $189 million in new funding to scale itsfull-stack AI cloud and expand its compute capacity. The financing includes anoversubscribed Series B led by Emergen...",
+      "published": "Tue, 22 Sep 2026 08:03:36 +0000",
+      "categories": [
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "series a+",
+      "country": "Europe (unspecified)",
+      "company_guess": "Verda",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "Biolevate lands \u20ac30M Series A to scale life sciences AI",
+      "link": "https://tech.eu/2026/09/22/biolevate-lands-eur30m-series-a-to-scale-life-sciences-ai/",
+      "summary": "Life sciences AI company Biolevate hasraised \u20ac30 million in Series A funding to expand its platform for automatingscientific and regulatory workflows and support its international growth. Theround was...",
+      "published": "Tue, 22 Sep 2026 07:50:00 +0000",
+      "categories": [
+        "Healthtech",
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "series a+",
+      "country": "Europe (unspecified)",
+      "company_guess": "Biolevate",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "Primo raises $8M to bring autonomous AI agents to IT operations",
+      "link": "https://tech.eu/2026/09/22/primo-raises-8m-to-bring-autonomous-ai-agents-to-it-operations/",
+      "summary": "Primo, an AI platform for managing corporate IT, has raised$8 million in a funding round led by Headline and Global Founders Capital. The company\u2019s investors also include Pennylane co-founder and CEO ...",
+      "published": "Tue, 22 Sep 2026 07:30:00 +0000",
+      "categories": [
+        "Software development",
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "unclear",
+      "country": "Europe (unspecified)",
+      "company_guess": "Primo",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "Morphotonics closes \u20ac40M+ Series B to tackle AI devices\u2019 hidden manufacturing bottleneck",
+      "link": "https://tech.eu/2026/09/22/morphotonics-closes-eur40m-series-b-to-tackle-ai-devices-hidden-manufacturing-bottleneck/",
+      "summary": "Netherlands-based deeptech companyMorphotonics has raised more than \u20ac40 million in Series B funding to scale itsmanufacturing technology for AI glasses, augmented reality waveguides andadvanced photon...",
+      "published": "Tue, 22 Sep 2026 07:20:00 +0000",
+      "categories": [
+        "Deeptech"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "series a+",
+      "country": "Netherlands",
+      "company_guess": "Morphotonics",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "Zeliq raises \u20ac7M to build an agentic revenue workspace",
+      "link": "https://tech.eu/2026/09/22/zeliq-raises-eur7m-to-build-an-agentic-revenue-workspace/",
+      "summary": "Salesprospecting platform Zeliq has raised a \u20ac7 million seed extension led by The Moon Venture, with participation from Julien Jean (JJCapinvest) and SylvestreBlavet (Freelance.com). Existing investor...",
+      "published": "Tue, 22 Sep 2026 07:00:00 +0000",
+      "categories": [
+        "SaaS"
+      ],
+      "source": "Tech.eu",
+      "sectors": [],
+      "stage": "seed",
+      "country": "Europe (unspecified)",
+      "company_guess": "Zeliq",
+      "decision": "excluded_sector"
+    },
+    {
+      "title": "Nscale helped ByteDance subsidiary access Nvidia chips, swerving US rules \u2014 reports",
+      "link": "https://sifted.eu/articles/nscale-nvidia-bytedance-tiktok/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 16:59:33 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Nscale helped ByteDance subsidiary access Nvidia chips, swer",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Magic AI raises \u00a38m to take its AI-powered fitness mirror to the US",
+      "link": "https://sifted.eu/articles/magic-ai-fitness-mirror-funding-round/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 15:01:35 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "unclear",
+      "country": "Europe (unspecified)",
+      "company_guess": "Magic AI",
+      "decision": "excluded_stage"
+    },
+    {
+      "title": "Anthropic and Nvidia back Basecamp Research in $140m round",
+      "link": "https://sifted.eu/articles/anthropic-nvidia-basecamp-research/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 14:00:30 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Anthropic and Nvidia back Basecamp Research in $140m round",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "\u2018You cannot hide from AI\u2019: Should we fear AI-led performance reviews?",
+      "link": "https://sifted.eu/articles/alan-chang-fuse-ai-reviews/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 10:40:28 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "\u2018You cannot hide from AI\u2019: Should we fear AI-led performance",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "What if companies could finally use their most valuable data?",
+      "link": "https://sifted.eu/articles/companies-finally-use-their-most-valuable-data-brnd/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 09:00:00 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "What if companies could finally use their most valuable data",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Exclusive: Connect Ventures raises $55m in first close of fifth fund to chase deeptech founders",
+      "link": "https://sifted.eu/articles/connect-ventures-55-million-fund-deeptech-founders/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 05:00:31 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "unclear",
+      "country": "Europe (unspecified)",
+      "company_guess": "Exclusive: Connect Ventures raises $55m in first close of fi",
+      "decision": "excluded_sector"
+    },
+    {
+      "title": "Exclusive: Vsquared and East X Ventures lead \u00a310m seed for rare materials startup",
+      "link": "https://sifted.eu/articles/standardx-seed-10m/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 05:00:14 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Exclusive: Vsquared and East X Ventures lead \u00a310m seed for r",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Qdrant\u2019s next chapter: From vector search into physical AI",
+      "link": "https://sifted.eu/articles/qdrants-next-chapter-from-vector-search-into-physical-ai/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 05:00:02 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Qdrant\u2019s next chapter: From vector search into physical AI",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "From one of Europe\u2019s biggest fintech exits to bootstrapping an AI startup: \u2018There\u2019s no limitation\u2019",
+      "link": "https://sifted.eu/articles/tink-founders-launch-freda/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 05:00:02 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "Fintech",
+        "AI"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "From one of Europe\u2019s biggest fintech exits to bootstrapping ",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Cloud startup Verda raises $189m in funding round led by Emergence Capital",
+      "link": "https://sifted.eu/articles/verda-datacrunch-funding-round-emergence-ventures/",
+      "summary": "",
+      "published": "Tue, 22 Sep 2026 16:08:30 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "unclear",
+      "country": "Europe (unspecified)",
+      "company_guess": "Cloud startup Verda raises $189m in funding round led by Eme",
+      "decision": "excluded_sector"
+    },
+    {
+      "title": "Exclusive: Mistral acquires adtech startup Pimento in \u20ac12.7m cash-and-shares deal, filings show",
+      "link": "https://sifted.eu/articles/exclusive-mistral-pimento-acquisition/",
+      "summary": "",
+      "published": "Tue, 22 Sep 2026 15:00:15 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Exclusive: Mistral acquires adtech startup Pimento in \u20ac12.7m",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Exclusive: NIF backs defence startup Terasi in \u20ac11m raise",
+      "link": "https://sifted.eu/articles/exclusive-nif-backs-defence-startup-terasi-in-e11m-raise/",
+      "summary": "",
+      "published": "Tue, 22 Sep 2026 13:33:38 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Exclusive: NIF backs defence startup Terasi in \u20ac11m raise",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "A16z wants to back more European startups \u2014 but won\u2019t reopen European office anytime soon",
+      "link": "https://sifted.eu/articles/a16z-andreessen-horowitz-europe-ai-investing-consumer/",
+      "summary": "",
+      "published": "Tue, 22 Sep 2026 05:00:52 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "A16z wants to back more European startups \u2014 but won\u2019t reopen",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "N8n boss: \u2018Our goal is to get to 1bn users with fewer than 1,000 employees'",
+      "link": "https://sifted.eu/articles/n8n-boss-1bn-users-fewer-than-1000-employees/",
+      "summary": "",
+      "published": "Tue, 22 Sep 2026 05:00:42 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "N8n boss: \u2018Our goal is to get to 1bn users with fewer than 1",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Exclusive: GFC, Firstminute back Palantir and Goldman alums to take on the Big Four",
+      "link": "https://sifted.eu/articles/exclusive-benford-5m/",
+      "summary": "",
+      "published": "Tue, 22 Sep 2026 05:00:22 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Exclusive: GFC, Firstminute back Palantir and Goldman alums ",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "London Demo Day 2026: startups to watch",
+      "link": "https://sifted.eu/articles/london-demo-day-2026-startups-to-watch/",
+      "summary": "",
+      "published": "Mon, 21 Sep 2026 05:00:55 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "UK",
+      "company_guess": "London Demo Day 2026: startups to watch",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "New solo GP firm backing early-stage AI and deeptech startups hits first close of maiden fund",
+      "link": "https://sifted.eu/articles/new-solo-gp-firm-backing-early-stage-ai-and-deeptech-startups-hits-first-close-of-maiden-fund/",
+      "summary": "",
+      "published": "Mon, 21 Sep 2026 05:00:32 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "New solo GP firm backing early-stage AI and deeptech startup",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Europe\u2019s advantage: moving AI from the screen to the real world",
+      "link": "https://sifted.eu/articles/europes-advantage-moving-ai-from-the-screen-to-the-real-world/",
+      "summary": "",
+      "published": "Mon, 21 Sep 2026 05:00:25 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "Europe\u2019s advantage: moving AI from the screen to the real wo",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "UK Sovereign AI Fund in talks to back raise for drug discovery startup",
+      "link": "https://sifted.eu/articles/uk-sovereign-ai-fund-in-talks-to-back-500m-raise-for-drug-discovery-startup/",
+      "summary": "",
+      "published": "Fri, 18 Sep 2026 16:51:46 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "UK Sovereign AI Fund in talks to back raise for drug discove",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "The biggest conversations in US VC right now",
+      "link": "https://sifted.eu/articles/us-vc-conversations-ai-anthropic-agents/",
+      "summary": "",
+      "published": "Fri, 18 Sep 2026 11:55:11 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "The biggest conversations in US VC right now",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "\u2018It\u2019s the modern nuclear arms race\u2019: safety expert Denis Shilov on slowing down AI",
+      "link": "https://sifted.eu/articles/denis-shilov-white-circle-ai-safety/",
+      "summary": "",
+      "published": "Fri, 18 Sep 2026 10:50:36 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "\u2018It\u2019s the modern nuclear arms race\u2019: safety expert Denis Shi",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Inside London's weirdest neolab",
+      "link": "https://sifted.eu/articles/inside-londons-weirdest-neolab/",
+      "summary": "",
+      "published": "Fri, 18 Sep 2026 05:00:31 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "UK",
+      "company_guess": "Inside London's weirdest neolab",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "EU Scaleup Fund in talks to back ElevenLabs in $500m round, reports say",
+      "link": "https://sifted.eu/articles/elevenlabs-funding-round-scaleup-europe-fund/",
+      "summary": "",
+      "published": "Thu, 17 Sep 2026 16:20:47 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "Europe (unspecified)",
+      "company_guess": "EU Scaleup Fund in talks to back ElevenLabs in $500m round, ",
+      "decision": "excluded_not_funding"
+    },
+    {
+      "title": "Revolut mulls dual listing in London and New York",
+      "link": "https://sifted.eu/articles/revolut-dual-listing-2/",
+      "summary": "",
+      "published": "Thu, 17 Sep 2026 16:15:32 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [],
+      "stage": "not_funding",
+      "country": "UK",
+      "company_guess": "Revolut mulls dual listing in London and New York",
+      "decision": "excluded_not_funding"
+    }
+  ]
+}

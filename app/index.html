@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>European sourcing scanner, MVP</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>European pre-seed / seed sourcing scanner</h1>
+  <p class="subtitle">Local MVP. Nothing here reads from or writes to Affinity, Notion or Slack.</p>
+
+  <div id="banner" class="banner"></div>
+  <div id="stats" class="stats-row"></div>
+  <details class="gaps">
+    <summary>Sources not yet connected (read before trusting this as complete)</summary>
+    <div id="gaps"></div>
+  </details>
+
+  <div class="controls">
+    <select id="sectorFilter"><option value="">All sectors</option></select>
+    <button id="resetDecisions">Clear my likes/dislikes</button>
+    <button id="exportApproved" class="primary">Export liked deals (JSON)</button>
+  </div>
+
+  <div class="section-title">New today</div>
+  <div id="dealList"></div>
+
+  <footer>
+    Liking a deal here only saves it to this browser (localStorage). It does not create
+    anything in Affinity. Use "Export liked deals" and hand the file to whoever runs the
+    real Affinity workflow, or wire that step up later once this is trusted.
+  </footer>
+</div>
+
+<script src="../data/data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

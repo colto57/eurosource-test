@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>European sourcing scanner, MVP</title>
+<style>
+:root {
+  --blue: #2a78d6;
+  --gray: #b4b2a9;
+  --green: #1d9e75;
+  --amber: #ef9f27;
+  --red: #e24b4a;
+  --ink: #1f2430;
+  --paper: #fafaf8;
+  --card: #ffffff;
+  --border: #d9d7cf;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 20px 20px 60px;
+}
+
+.banner {
+  background: #eef4fc;
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.banner b { color: var(--blue); }
+
+h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  color: #6b6f78;
+  margin: 0 0 18px;
+  font-size: 13px;
+}
+
+.stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.stat-card {
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-width: 120px;
+}
+
+.stat-card .n {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.stat-card .label {
+  font-size: 12px;
+  color: #6b6f78;
+}
+
+details.gaps {
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+  margin-bottom: 18px;
+}
+
+details.gaps summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.gap-row {
+  border-top: 0.5px solid var(--border);
+  padding: 8px 0;
+  font-size: 13px;
+}
+
+.gap-row .name { font-weight: 600; }
+
+.tag {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 11px;
+  margin-right: 4px;
+  border: 0.5px solid var(--border);
+  background: #f1f0eb;
+}
+
+.tag.status-blocked, .tag.status-not-connected, .tag.status-intentionally-not-implemented {
+  color: var(--red);
+  border-color: var(--red);
+  background: #fbeceb;
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.controls button, .controls select {
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.controls button.primary {
+  background: var(--blue);
+  color: white;
+  border-color: var(--blue);
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 20px 0 8px;
+}
+
+.deal-card {
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+}
+
+.deal-card.liked { border-color: var(--green); }
+.deal-card.disliked { opacity: 0.5; }
+
+.deal-card .title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 4px;
+}
+
+.deal-card .title a { color: var(--ink); text-decoration: none; }
+.deal-card .title a:hover { text-decoration: underline; }
+
+.deal-meta {
+  font-size: 12px;
+  color: #6b6f78;
+  margin-bottom: 6px;
+}
+
+.deal-snippet {
+  font-size: 13px;
+  color: #3a3e47;
+  margin-bottom: 10px;
+  line-height: 1.45;
+}
+
+.deal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.deal-actions button {
+  border: 0.5px solid var(--border);
+  border-radius: 8px;
+  background: var(--paper);
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.deal-actions button.like.active {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
+}
+
+.deal-actions button.dislike.active {
+  background: var(--red);
+  color: white;
+  border-color: var(--red);
+}
+
+.empty-state {
+  color: #6b6f78;
+  font-size: 13px;
+  padding: 20px 0;
+}
+
+footer {
+  color: #9a988f;
+  font-size: 12px;
+  margin-top: 30px;
+  border-top: 0.5px solid var(--border);
+  padding-top: 12px;
+}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>European pre-seed / seed sourcing scanner</h1>
+  <p class="subtitle">Local MVP. Nothing here reads from or writes to Affinity, Notion or Slack.</p>
+
+  <div id="banner" class="banner"></div>
+  <div id="stats" class="stats-row"></div>
+  <details class="gaps">
+    <summary>Sources not yet connected (read before trusting this as complete)</summary>
+    <div id="gaps"></div>
+  </details>
+
+  <div class="controls">
+    <select id="sectorFilter"><option value="">All sectors</option></select>
+    <button id="resetDecisions">Clear my likes/dislikes</button>
+    <button id="exportApproved" class="primary">Export liked deals (JSON)</button>
+  </div>
+
+  <div class="section-title">New today</div>
+  <div id="dealList"></div>
+
+  <footer>
+    Liking a deal here only saves it to this browser (localStorage). It does not create
+    anything in Affinity. Use "Export liked deals" and hand the file to whoever runs the
+    real Affinity workflow, or wire that step up later once this is trusted.
+  </footer>
+</div>
+
+<script>
+window.EURO_SOURCING_DATA = {
+  "meta": {
+    "generated_at": "2026-09-23T13:18:36",
+    "run_date": "2026-09-23",
+    "sources": [
+      "EU-Startups",
+      "Tech.eu",
+      "Sifted"
+    ],
+    "fetch_errors": [],
+    "real": true,
+    "notes": [
+      "Real data fetched live from the sources listed above. No synthetic or fabricated deals in this file.",
+      "This does not read from or write to Affinity, Notion, Box or Slack at runtime."
+    ]
+  },
+  "stats": {
+    "scanned": 54,
+    "in_scope": 4,
+    "excluded_sector": 8,
+    "excluded_stage": 10,
+    "excluded_not_funding": 32,
+    "new_today": 0
+  },
+  "gaps": [
+    {
+      "name": "PitchBook",
+      "status": "not connected",
+      "why": "Needs a paid PitchBook API/export license. Motive already has a PitchBook seat (used in the weekly mv-deal-digest skill) but this MVP does not use it, to keep everything local and credential-free."
+    },
+    {
+      "name": "Crunchbase",
+      "status": "not connected",
+      "why": "Needs a Crunchbase API key (paid tier for bulk/recent-rounds access)."
+    },
+    {
+      "name": "LinkedIn",
+      "status": "intentionally not implemented",
+      "why": "Automated scraping of LinkedIn violates its Terms of Service. A compliant path would be LinkedIn's official Talent/Sales Navigator exports (manual) or a licensed data vendor such as Harmonic. Not built here; flagging so it isn't mistaken for an oversight."
+    },
+    {
+      "name": "FinSMEs",
+      "status": "blocked",
+      "why": "Feed returns HTTP 403 from this environment (bot protection). May work from a different network/IP; worth re-testing."
+    },
+    {
+      "name": "TechFundingNews",
+      "status": "blocked",
+      "why": "Feed returns HTTP 403 from this environment (bot protection)."
+    }
+  ],
+  "deals": []
+};
+
+</script>
+<script>
+(function () {
+  "use strict";
+
+  var DATA = window.EURO_SOURCING_DATA || { meta: {}, stats: {}, gaps: [], deals: [] };
+  var STORAGE_KEY = "euro_sourcing_decisions";
+
+  function loadDecisions() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function saveDecisions(decisions) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(decisions));
+    } catch (e) {
+      // localStorage unavailable (e.g. file:// in some browsers); decisions
+      // just won't persist across reloads. Not fatal.
+    }
+  }
+
+  var decisions = loadDecisions();
+
+  function renderBanner() {
+    var meta = DATA.meta || {};
+    var sources = (meta.sources || []).join(", ");
+    var el = document.getElementById("banner");
+    var errNote = "";
+    if (meta.fetch_errors && meta.fetch_errors.length) {
+      errNote = " " + meta.fetch_errors.length + " source(s) failed to fetch this run: " +
+        meta.fetch_errors.map(function (e) { return e.source; }).join(", ") + ".";
+    }
+    el.innerHTML = "<b>Real data.</b> Fetched live from " + (sources || "no sources") +
+      " on " + (meta.run_date || "unknown date") + "." + errNote +
+      " Pitchbook, Crunchbase and LinkedIn are not connected, see the gaps panel below.";
+  }
+
+  function renderStats() {
+    var stats = DATA.stats || {};
+    var cards = [
+      ["scanned", "Articles scanned"],
+      ["in_scope", "Matched sector + stage"],
+      ["new_today", "New today (not seen before)"],
+      ["excluded_sector", "Excluded, wrong sector"],
+      ["excluded_stage", "Excluded, wrong stage"],
+    ];
+    var html = cards.map(function (c) {
+      var n = stats[c[0]];
+      return '<div class="stat-card"><div class="n">' + (n === undefined ? "?" : n) +
+        '</div><div class="label">' + c[1] + "</div></div>";
+    }).join("");
+    document.getElementById("stats").innerHTML = html;
+  }
+
+  function slug(s) {
+    return String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  }
+
+  function renderGaps() {
+    var html = (DATA.gaps || []).map(function (g) {
+      return '<div class="gap-row"><span class="name">' + escapeHtml(g.name) +
+        '</span> <span class="tag status-' + slug(g.status) + '">' + escapeHtml(g.status) +
+        "</span><div>" + escapeHtml(g.why) + "</div></div>";
+    }).join("");
+    document.getElementById("gaps").innerHTML = html || '<div class="empty-state">No known gaps recorded.</div>';
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function populateSectorFilter() {
+    var sectors = {};
+    (DATA.deals || []).forEach(function (d) {
+      (d.sectors || []).forEach(function (s) { sectors[s] = true; });
+    });
+    var sel = document.getElementById("sectorFilter");
+    Object.keys(sectors).sort().forEach(function (s) {
+      var opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener("change", renderDeals);
+  }
+
+  function dealCardHtml(deal) {
+    var decision = decisions[deal.id];
+    var cls = decision === "like" ? "liked" : decision === "dislike" ? "disliked" : "";
+    var sectorTags = (deal.sectors || []).map(function (s) {
+      return '<span class="tag">' + escapeHtml(s) + "</span>";
+    }).join("");
+    return (
+      '<div class="deal-card ' + cls + '" data-id="' + escapeHtml(deal.id) + '">' +
+      '<div class="title"><a href="' + escapeHtml(deal.link) + '" target="_blank" rel="noopener">' +
+      escapeHtml(deal.title) + "</a></div>" +
+      '<div class="deal-meta">' + escapeHtml(deal.source) + " &middot; " +
+      escapeHtml(deal.published || "date unknown") + " &middot; " +
+      escapeHtml(deal.country) + " &middot; stage: " + escapeHtml(deal.stage) + "</div>" +
+      '<div class="deal-snippet">' + escapeHtml(deal.summary) + "</div>" +
+      "<div>" + sectorTags + "</div>" +
+      '<div class="deal-actions" style="margin-top:8px">' +
+      '<button class="like' + (decision === "like" ? " active" : "") + '" data-action="like">Like</button>' +
+      '<button class="dislike' + (decision === "dislike" ? " active" : "") + '" data-action="dislike">Dislike</button>' +
+      "</div></div>"
+    );
+  }
+
+  function renderDeals() {
+    var filter = document.getElementById("sectorFilter").value;
+    var deals = (DATA.deals || []).filter(function (d) {
+      return !filter || (d.sectors || []).indexOf(filter) !== -1;
+    });
+    var container = document.getElementById("dealList");
+    if (!deals.length) {
+      container.innerHTML = '<div class="empty-state">No new in-scope deals in this run.</div>';
+      return;
+    }
+    container.innerHTML = deals.map(dealCardHtml).join("");
+    container.querySelectorAll(".deal-actions button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var card = btn.closest(".deal-card");
+        var id = card.getAttribute("data-id");
+        var action = btn.getAttribute("data-action");
+        decisions[id] = decisions[id] === action ? undefined : action;
+        if (decisions[id] === undefined) delete decisions[id];
+        saveDecisions(decisions);
+        renderDeals();
+      });
+    });
+  }
+
+  function exportApproved() {
+    var liked = (DATA.deals || []).filter(function (d) { return decisions[d.id] === "like"; });
+    var blob = new Blob([JSON.stringify(liked, null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url;
+    a.download = "euro-sourcing-approved-" + (DATA.meta.run_date || "export") + ".json";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  document.getElementById("exportApproved").addEventListener("click", exportApproved);
+  document.getElementById("resetDecisions").addEventListener("click", function () {
+    decisions = {};
+    saveDecisions(decisions);
+    renderDeals();
+  });
+
+  renderBanner();
+  renderStats();
+  renderGaps();
+  populateSectorFilter();
+  renderDeals();
+})();
+
+</script>
+</body>
+</html>
