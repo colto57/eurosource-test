@@ -3,8 +3,10 @@
 shareable file: dist/euro-sourcing-mvp.html. No CDN dependency, no network
 needed to view it after the daily fetch has run.
 
-Also writes docs/index.html (identical content) since GitHub Pages can only
-serve from a repo's root or /docs folder, not an arbitrary path like /dist."""
+Also writes docs/index.html and a root-level index.html (all identical
+content) since GitHub Pages can only serve from a repo's root or /docs
+folder, not an arbitrary path like /dist, and either one might end up
+selected in a given repo's Pages settings."""
 
 import os
 import re
@@ -50,6 +52,11 @@ def main():
     with open(pages_path, "w", encoding="utf-8") as f:
         f.write(html)
     print(f"Wrote {pages_path} ({os.path.getsize(pages_path)} bytes)")
+
+    root_path = os.path.join(ROOT, "index.html")
+    with open(root_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Wrote {root_path} ({os.path.getsize(root_path)} bytes)")
 
 
 if __name__ == "__main__":

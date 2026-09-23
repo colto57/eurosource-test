@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generated_at": "2026-09-23T18:58:16",
+    "generated_at": "2026-09-23T19:13:38",
     "run_date": "2026-09-23",
     "sources": [
       "EU-Startups",
@@ -829,6 +829,22 @@
       "decision": "excluded_sector"
     },
     {
+      "title": "Revolut unveils facial recognition payments in UK",
+      "link": "https://sifted.eu/articles/revolut-facial-recognition-face-payments-pay-with-smile/",
+      "summary": "",
+      "published": "Thu, 24 Sep 2026 00:01:57 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "Fintech"
+      ],
+      "stage": "not_funding",
+      "country": "country unconfirmed",
+      "company_guess": "Revolut unveils facial recognition payments in UK",
+      "amount_usd_approx": null,
+      "decision": "excluded_not_funding"
+    },
+    {
       "title": "Nscale helped ByteDance subsidiary access Nvidia chips, swerving US rules \u2014 reports",
       "link": "https://sifted.eu/articles/nscale-nvidia-bytedance-tiktok/",
       "summary": "",
@@ -1166,20 +1182,6 @@
       "country": "country unconfirmed",
       "company_guess": "EU Scaleup Fund in talks to back ElevenLabs in $500m round, ",
       "amount_usd_approx": 500.0,
-      "decision": "excluded_not_funding"
-    },
-    {
-      "title": "Revolut mulls dual listing in London and New York",
-      "link": "https://sifted.eu/articles/revolut-dual-listing-2/",
-      "summary": "",
-      "published": "Thu, 17 Sep 2026 16:15:32 GMT",
-      "categories": [],
-      "source": "Sifted",
-      "sectors": [],
-      "stage": "not_funding",
-      "country": "UK",
-      "company_guess": "Revolut mulls dual listing in London and New York",
-      "amount_usd_approx": null,
       "decision": "excluded_not_funding"
     }
   ]
