@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Inlines app/index.html + styles.css + data/data.js + app.js into a single
 shareable file: dist/euro-sourcing-mvp.html. No CDN dependency, no network
-needed to view it after the daily fetch has run."""
+needed to view it after the daily fetch has run.
+
+Also writes docs/index.html (identical content) since GitHub Pages can only
+serve from a repo's root or /docs folder, not an arbitrary path like /dist."""
 
 import os
 import re
@@ -40,8 +43,13 @@ def main():
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(html)
-
     print(f"Wrote {out_path} ({os.path.getsize(out_path)} bytes)")
+
+    pages_path = os.path.join(ROOT, "docs", "index.html")
+    os.makedirs(os.path.dirname(pages_path), exist_ok=True)
+    with open(pages_path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"Wrote {pages_path} ({os.path.getsize(pages_path)} bytes)")
 
 
 if __name__ == "__main__":
