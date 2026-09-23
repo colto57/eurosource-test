@@ -1,2 +1,9 @@
 __pycache__/
 *.pyc
+
+# Agent-produced from your connected PitchBook account (company profiles,
+# PBIDs, financing details). Kept local only, not published: PitchBook data
+# is typically licensed with redistribution restrictions. See CLAUDE.md
+# "Two source lanes" for how to regenerate these locally.
+data/pitchbook_raw.json
+data/pitchbook_enrichment.json

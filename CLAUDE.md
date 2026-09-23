@@ -84,10 +84,6 @@ digest from repeating the same deal every day.
   in `config.py` are a first pass, not tuned against a labeled set. Expect
   both false positives and misses; the point of this MVP is the pipeline
   shape, not classifier accuracy.
-- FinSMEs and TechFundingNews (both on the free-source allowlist the
-  `mv-deal-digest` process already trusts) return HTTP 403 from this
-  environment. Worth retesting from wherever this actually runs day to day
-  before concluding they're unusable.
 - No scheduling is set up. Running this daily unattended would need a
   `cron` entry or the `schedule` skill; deliberately not done without
   asking first, since it's a standing change to a machine rather than a

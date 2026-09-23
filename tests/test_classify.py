@@ -91,6 +91,54 @@ check("company name extraction picks Novabank", name == "Novabank")
 name = classify.guess_company_name("A totally unrelated headline with no funding verb")
 check("company name extraction returns None when no pattern matches", name is None)
 
+# 8. Ambiguous stage: funding + in-scope sector, but no seed/series wording
+# at all. Must NOT be silently dropped (mv-deal-digest rule: flag, don't
+# exclude) -> needs_review, not excluded_stage.
+r = classify.classify(item(
+    "Munich fintech startup Kontoro raises €4 million to expand lending platform",
+    "Kontoro secures new funding to expand its lending platform across Germany.",
+))
+check("ambiguous stage funding+sector is needs_review, not silently dropped", r["decision"] == "needs_review")
+
+# 9. Debt facility should not be treated as an equity seed round even
+# though it contains "raises" and a sector keyword.
+r = classify.classify(item(
+    "Dublin fintech Loantree raises €20 million debt facility to fund lending",
+    "Loantree secures a debt facility, structured as a credit facility with a European bank.",
+))
+check("debt facility is excluded_debt_or_ma, not in_scope", r["decision"] == "excluded_debt_or_ma")
+
+# 10. Acquisition, phrased with a funding-shaped verb ("closes"), should
+# still be excluded as M&A rather than counted as a seed round.
+r = classify.classify(item(
+    "Compliance group closes acquisition of regtech startup Verifai",
+    "The compliance group closes its acquisition of Verifai, a regtech seed-stage startup.",
+))
+check("acquisition is excluded_debt_or_ma, not in_scope", r["decision"] == "excluded_debt_or_ma")
+
+# 11. Word-boundary AI matching: punctuation right after "AI" must still match.
+r = classify.classify(item(
+    "Oslo startup Nordbrain raises seed round, product built on AI.",
+    "Nordbrain raises a seed round for its platform built on AI.",
+))
+check("AI followed by punctuation still matches AI sector", "AI" in r["sectors"])
+
+# 12. Word-boundary AI matching must not false-positive on unrelated words
+# containing "ai" as a substring (e.g. "maintain", "certain").
+r = classify.classify(item(
+    "Vienna startup Certaly raises seed round to maintain certain compliance workflows",
+    "Certaly raises seed funding for a regtech workflow tool to maintain certain processes.",
+))
+check("'maintain'/'certain' do not false-positive match AI", "AI" not in r["sectors"])
+
+# 13. Amount extraction, used only for sort order (biggest rounds first),
+# not for financial reporting.
+check("extracts $8M", classify.extract_amount_usd_approx("Company raises $8M seed") == 8.0)
+check("extracts and converts €6 million to approx USD", classify.extract_amount_usd_approx("raises €6 million seed") == 7.0)
+check("extracts £8m with GBP conversion", classify.extract_amount_usd_approx("raises £8m seed") == 10.7)
+check("extracts $1.2 billion as 1200", classify.extract_amount_usd_approx("raises $1.2 billion") == 1200.0)
+check("returns None when no amount is present", classify.extract_amount_usd_approx("Magic AI raises seed round") is None)
+
 print(f"{passed} of {passed + failed} checks passed")
 if failed:
     sys.exit(1)

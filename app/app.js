@@ -23,28 +23,16 @@
 
   var decisions = loadDecisions();
 
-  function renderBanner() {
-    var meta = DATA.meta || {};
-    var sources = (meta.sources || []).join(", ");
-    var el = document.getElementById("banner");
-    var errNote = "";
-    if (meta.fetch_errors && meta.fetch_errors.length) {
-      errNote = " " + meta.fetch_errors.length + " source(s) failed to fetch this run: " +
-        meta.fetch_errors.map(function (e) { return e.source; }).join(", ") + ".";
-    }
-    el.innerHTML = "<b>Real data.</b> Fetched live from " + (sources || "no sources") +
-      " on " + (meta.run_date || "unknown date") + "." + errNote +
-      " Pitchbook, Crunchbase and LinkedIn are not connected, see the gaps panel below.";
-  }
-
   function renderStats() {
     var stats = DATA.stats || {};
     var cards = [
       ["scanned", "Articles scanned"],
       ["in_scope", "Matched sector + stage"],
+      ["needs_review", "Needs review (ambiguous stage)"],
       ["new_today", "New today (not seen before)"],
       ["excluded_sector", "Excluded, wrong sector"],
       ["excluded_stage", "Excluded, wrong stage"],
+      ["excluded_debt_or_ma", "Excluded, debt or M&A"],
     ];
     var html = cards.map(function (c) {
       var n = stats[c[0]];
@@ -59,12 +47,27 @@
   }
 
   function renderGaps() {
-    var html = (DATA.gaps || []).map(function (g) {
+    var meta = DATA.meta || {};
+    var rows = (DATA.gaps || []).map(function (g) {
       return '<div class="gap-row"><span class="name">' + escapeHtml(g.name) +
         '</span> <span class="tag status-' + slug(g.status) + '">' + escapeHtml(g.status) +
         "</span><div>" + escapeHtml(g.why) + "</div></div>";
-    }).join("");
-    document.getElementById("gaps").innerHTML = html || '<div class="empty-state">No known gaps recorded.</div>';
+    });
+    var liveSources = (meta.sources || []).join(", ");
+    if (liveSources) {
+      rows.unshift(
+        '<div class="gap-row"><span class="name">RSS feeds</span> ' +
+        '<span class="tag">live, fetched ' + escapeHtml(meta.run_date || "") + "</span><div>" +
+        escapeHtml(liveSources) + "</div></div>"
+      );
+    }
+    if (meta.fetch_errors && meta.fetch_errors.length) {
+      rows.push(
+        '<div class="gap-row"><span class="name">Fetch errors this run</span>' +
+        "<div>" + meta.fetch_errors.map(function (e) { return escapeHtml(e.source); }).join(", ") + "</div></div>"
+      );
+    }
+    document.getElementById("gaps").innerHTML = rows.join("") || '<div class="empty-state">No source info recorded.</div>';
   }
 
   function escapeHtml(s) {
@@ -77,8 +80,10 @@
 
   function populateSectorFilter() {
     var sectors = {};
+    var sourceNames = {};
     (DATA.deals || []).forEach(function (d) {
       (d.sectors || []).forEach(function (s) { sectors[s] = true; });
+      if (d.source) sourceNames[d.source] = true;
     });
     var sel = document.getElementById("sectorFilter");
     Object.keys(sectors).sort().forEach(function (s) {
@@ -88,6 +93,15 @@
       sel.appendChild(opt);
     });
     sel.addEventListener("change", renderDeals);
+
+    var srcSel = document.getElementById("sourceFilter");
+    Object.keys(sourceNames).sort().forEach(function (s) {
+      var opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      srcSel.appendChild(opt);
+    });
+    srcSel.addEventListener("change", renderDeals);
   }
 
   function dealCardHtml(deal) {
@@ -98,9 +112,11 @@
     }).join("");
     return (
       '<div class="deal-card ' + cls + '" data-id="' + escapeHtml(deal.id) + '">' +
+      '<span class="source-tag">' + escapeHtml(deal.source || "unknown source") + "</span>" +
       '<div class="title"><a href="' + escapeHtml(deal.link) + '" target="_blank" rel="noopener">' +
       escapeHtml(deal.title) + "</a></div>" +
-      '<div class="deal-meta">' + escapeHtml(deal.source) + " &middot; " +
+      '<div class="deal-meta">' +
+      (deal.amount_usd_approx ? "~$" + deal.amount_usd_approx + "M &middot; " : "amount unknown &middot; ") +
       escapeHtml(deal.published || "date unknown") + " &middot; " +
       escapeHtml(deal.country) + " &middot; stage: " + escapeHtml(deal.stage) + "</div>" +
       '<div class="deal-snippet">' + escapeHtml(deal.summary) + "</div>" +
@@ -112,14 +128,28 @@
     );
   }
 
-  function renderDeals() {
+  function renderList(containerId, decisionValue, emptyText) {
     var filter = document.getElementById("sectorFilter").value;
+    var sourceFilter = document.getElementById("sourceFilter").value;
     var deals = (DATA.deals || []).filter(function (d) {
-      return !filter || (d.sectors || []).indexOf(filter) !== -1;
+      var matchesDecision = decisionValue ? d.decision === decisionValue
+        : d.decision !== "needs_review";
+      var matchesSector = !filter || (d.sectors || []).indexOf(filter) !== -1;
+      var matchesSource = !sourceFilter || d.source === sourceFilter;
+      return matchesDecision && matchesSector && matchesSource;
     });
-    var container = document.getElementById("dealList");
+    // Biggest known round first, so a large deal never gets buried by
+    // arriving late in feed order; unknown amounts sort last, not as 0.
+    deals.sort(function (a, b) {
+      var av = a.amount_usd_approx, bv = b.amount_usd_approx;
+      if (av == null && bv == null) return 0;
+      if (av == null) return 1;
+      if (bv == null) return -1;
+      return bv - av;
+    });
+    var container = document.getElementById(containerId);
     if (!deals.length) {
-      container.innerHTML = '<div class="empty-state">No new in-scope deals in this run.</div>';
+      container.innerHTML = '<div class="empty-state">' + emptyText + "</div>";
       return;
     }
     container.innerHTML = deals.map(dealCardHtml).join("");
@@ -134,6 +164,11 @@
         renderDeals();
       });
     });
+  }
+
+  function renderDeals() {
+    renderList("dealList", "in_scope", "No new in-scope deals in this run.");
+    renderList("reviewList", "needs_review", "Nothing ambiguous this run.");
   }
 
   function exportApproved() {
@@ -156,7 +191,6 @@
     renderDeals();
   });
 
-  renderBanner();
   renderStats();
   renderGaps();
   populateSectorFilter();

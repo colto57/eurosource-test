@@ -6,28 +6,47 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="wrap">
-  <h1>European pre-seed / seed sourcing scanner</h1>
-  <p class="subtitle">Local MVP. Nothing here reads from or writes to Affinity, Notion or Slack.</p>
+<header class="topbar">
+  <div class="wordmark">MOTIVE <span>PARTNERS</span></div>
+  <div class="topbar-title">European sourcing scanner</div>
+</header>
 
-  <div id="banner" class="banner"></div>
+<div class="wrap">
+  <p class="eyebrow">Internal MVP, not a product</p>
+  <h1>Pre-seed / seed sourcing, across Europe</h1>
+  <p class="subtitle">Local prototype. Nothing here reads from or writes to Affinity, Notion or Slack.</p>
+</div>
+
+<section class="statband">
   <div id="stats" class="stats-row"></div>
+</section>
+
+<div class="wrap">
   <details class="gaps">
-    <summary>Sources not yet connected (read before trusting this as complete)</summary>
+    <summary>Data sources</summary>
     <div id="gaps"></div>
   </details>
 
   <div class="controls">
     <select id="sectorFilter"><option value="">All sectors</option></select>
+    <select id="sourceFilter"><option value="">All sources</option></select>
     <button id="resetDecisions">Clear my likes/dislikes</button>
     <button id="exportApproved" class="primary">Export liked deals (JSON)</button>
   </div>
 
-  <div class="section-title">New today</div>
+  <p class="eyebrow">New today</p>
   <div id="dealList"></div>
 
+  <p class="eyebrow">Needs review, ambiguous stage</p>
+  <p class="subtitle" style="margin-top:-6px">
+    Funding announcement, matches a core sector, but no clear pre-seed/seed/Series
+    wording was found. Could be either; a human should decide, not the keyword matcher.
+  </p>
+  <div id="reviewList"></div>
+
   <footer>
-    Liking a deal here only saves it to this browser (localStorage). It does not create
+    Every card shows where it came from (EU-Startups, Tech.eu, Sifted, or PitchBook).
+    Liking a deal only saves it to this browser (localStorage), it does not create
     anything in Affinity. Use "Export liked deals" and hand the file to whoever runs the
     real Affinity workflow, or wire that step up later once this is trusted.
   </footer>

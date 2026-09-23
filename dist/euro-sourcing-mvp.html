@@ -4,89 +4,124 @@
 <meta charset="UTF-8">
 <title>European sourcing scanner, MVP</title>
 <style>
+/* Loosely matches motivepartners.com: strict black/white/warm-gray,
+   Avenir Next, small tracked-out uppercase labels, sharp-cornered
+   bordered cards, bold black stat bands. Not an official brand kit,
+   just a visual approximation. */
+
 :root {
-  --blue: #2a78d6;
-  --gray: #b4b2a9;
-  --green: #1d9e75;
-  --amber: #ef9f27;
-  --red: #e24b4a;
-  --ink: #1f2430;
-  --paper: #fafaf8;
+  --ink: #0a0a0a;
+  --paper: #f2f1ee;
   --card: #ffffff;
-  --border: #d9d7cf;
+  --border: #dcdad3;
+  --muted: #6f6e69;
+  --green: #1d7a4c;
+  --red: #b3352c;
 }
 
 * { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-family: "Avenir Next", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   background: var(--paper);
   color: var(--ink);
   font-size: 14px;
 }
 
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 28px 0 8px;
+}
+
+.topbar {
+  background: var(--ink);
+  color: #fff;
+  padding: 16px 24px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wordmark {
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  font-weight: 600;
+}
+
+.wordmark span { font-weight: 300; opacity: 0.75; }
+
+.topbar-title {
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c9c7bf;
+}
+
 .wrap {
   max-width: 980px;
   margin: 0 auto;
-  padding: 20px 20px 60px;
+  padding: 24px 24px 60px;
 }
-
-.banner {
-  background: #eef4fc;
-  border: 0.5px solid var(--border);
-  border-radius: 12px;
-  padding: 12px 16px;
-  font-size: 13px;
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-.banner b { color: var(--blue); }
 
 h1 {
-  font-size: 20px;
-  font-weight: 600;
-  margin: 0 0 4px;
+  font-size: 30px;
+  font-weight: 400;
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
-  color: #6b6f78;
+  color: var(--muted);
   margin: 0 0 18px;
   font-size: 13px;
 }
 
+.statband {
+  background: var(--ink);
+  color: #fff;
+  padding: 20px 0;
+  margin-bottom: 0;
+}
+
 .stats-row {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 24px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 28px;
 }
 
 .stat-card {
-  background: var(--card);
-  border: 0.5px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 14px;
-  min-width: 120px;
+  min-width: 110px;
 }
 
 .stat-card .n {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1;
 }
 
 .stat-card .label {
-  font-size: 12px;
-  color: #6b6f78;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 10px;
+  color: #b9b7ae;
+  margin-top: 6px;
 }
 
 details.gaps {
   background: var(--card);
-  border: 0.5px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 14px;
-  margin-bottom: 18px;
+  border: 1px solid var(--border);
+  padding: 12px 16px;
+  margin: 24px 0;
 }
 
 details.gaps summary {
@@ -95,74 +130,85 @@ details.gaps summary {
   font-size: 13px;
 }
 
+details.gaps summary .muted { color: var(--muted); font-weight: 400; }
+
 .gap-row {
-  border-top: 0.5px solid var(--border);
-  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  padding: 10px 0;
   font-size: 13px;
 }
 
-.gap-row .name { font-weight: 600; }
+.gap-row .name {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+}
 
 .tag {
   display: inline-block;
-  border-radius: 999px;
-  padding: 2px 9px;
-  font-size: 11px;
-  margin-right: 4px;
-  border: 0.5px solid var(--border);
-  background: #f1f0eb;
+  padding: 2px 0;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-right: 12px;
 }
 
 .tag.status-blocked, .tag.status-not-connected, .tag.status-intentionally-not-implemented {
   color: var(--red);
-  border-color: var(--red);
-  background: #fbeceb;
+}
+
+.source-tag {
+  display: inline-block;
+  background: var(--ink);
+  color: #fff;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 8px;
+  margin-right: 8px;
 }
 
 .controls {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: center;
-  margin-bottom: 14px;
+  margin-bottom: 8px;
   flex-wrap: wrap;
 }
 
 .controls button, .controls select {
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
   background: var(--card);
-  padding: 6px 12px;
-  font-size: 13px;
+  padding: 7px 14px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .controls button.primary {
-  background: var(--blue);
+  background: var(--ink);
   color: white;
-  border-color: var(--blue);
-}
-
-.section-title {
-  font-size: 14px;
-  font-weight: 600;
-  margin: 20px 0 8px;
 }
 
 .deal-card {
   background: var(--card);
-  border: 0.5px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 16px;
+  border: 1px solid var(--border);
+  padding: 16px 18px;
   margin-bottom: 10px;
 }
 
-.deal-card.liked { border-color: var(--green); }
-.deal-card.disliked { opacity: 0.5; }
+.deal-card.liked { border-color: var(--green); border-width: 1px; }
+.deal-card.disliked { opacity: 0.45; }
 
 .deal-card .title {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
-  margin: 0 0 4px;
+  margin: 8px 0 6px;
 }
 
 .deal-card .title a { color: var(--ink); text-decoration: none; }
@@ -170,15 +216,15 @@ details.gaps summary {
 
 .deal-meta {
   font-size: 12px;
-  color: #6b6f78;
-  margin-bottom: 6px;
+  color: var(--muted);
+  margin-bottom: 8px;
 }
 
 .deal-snippet {
   font-size: 13px;
-  color: #3a3e47;
+  color: #3a3a37;
   margin-bottom: 10px;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .deal-actions {
@@ -187,12 +233,15 @@ details.gaps summary {
 }
 
 .deal-actions button {
-  border: 0.5px solid var(--border);
-  border-radius: 8px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
   background: var(--paper);
-  padding: 5px 12px;
-  font-size: 12px;
+  padding: 6px 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   cursor: pointer;
+  font-family: inherit;
 }
 
 .deal-actions button.like.active {
@@ -208,44 +257,63 @@ details.gaps summary {
 }
 
 .empty-state {
-  color: #6b6f78;
+  color: var(--muted);
   font-size: 13px;
   padding: 20px 0;
 }
 
 footer {
-  color: #9a988f;
+  color: var(--muted);
   font-size: 12px;
-  margin-top: 30px;
-  border-top: 0.5px solid var(--border);
-  padding-top: 12px;
+  margin-top: 34px;
+  border-top: 1px solid var(--border);
+  padding-top: 14px;
 }
 
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>European pre-seed / seed sourcing scanner</h1>
-  <p class="subtitle">Local MVP. Nothing here reads from or writes to Affinity, Notion or Slack.</p>
+<header class="topbar">
+  <div class="wordmark">MOTIVE <span>PARTNERS</span></div>
+  <div class="topbar-title">European sourcing scanner</div>
+</header>
 
-  <div id="banner" class="banner"></div>
+<div class="wrap">
+  <p class="eyebrow">Internal MVP, not a product</p>
+  <h1>Pre-seed / seed sourcing, across Europe</h1>
+  <p class="subtitle">Local prototype. Nothing here reads from or writes to Affinity, Notion or Slack.</p>
+</div>
+
+<section class="statband">
   <div id="stats" class="stats-row"></div>
+</section>
+
+<div class="wrap">
   <details class="gaps">
-    <summary>Sources not yet connected (read before trusting this as complete)</summary>
+    <summary>Data sources</summary>
     <div id="gaps"></div>
   </details>
 
   <div class="controls">
     <select id="sectorFilter"><option value="">All sectors</option></select>
+    <select id="sourceFilter"><option value="">All sources</option></select>
     <button id="resetDecisions">Clear my likes/dislikes</button>
     <button id="exportApproved" class="primary">Export liked deals (JSON)</button>
   </div>
 
-  <div class="section-title">New today</div>
+  <p class="eyebrow">New today</p>
   <div id="dealList"></div>
 
+  <p class="eyebrow">Needs review, ambiguous stage</p>
+  <p class="subtitle" style="margin-top:-6px">
+    Funding announcement, matches a core sector, but no clear pre-seed/seed/Series
+    wording was found. Could be either; a human should decide, not the keyword matcher.
+  </p>
+  <div id="reviewList"></div>
+
   <footer>
-    Liking a deal here only saves it to this browser (localStorage). It does not create
+    Every card shows where it came from (EU-Startups, Tech.eu, Sifted, or PitchBook).
+    Liking a deal only saves it to this browser (localStorage), it does not create
     anything in Affinity. Use "Export liked deals" and hand the file to whoever runs the
     real Affinity workflow, or wire that step up later once this is trusted.
   </footer>
@@ -254,7 +322,7 @@ footer {
 <script>
 window.EURO_SOURCING_DATA = {
   "meta": {
-    "generated_at": "2026-09-23T13:18:36",
+    "generated_at": "2026-09-23T18:58:16",
     "run_date": "2026-09-23",
     "sources": [
       "EU-Startups",
@@ -271,39 +339,192 @@ window.EURO_SOURCING_DATA = {
   "stats": {
     "scanned": 54,
     "in_scope": 4,
+    "needs_review": 3,
     "excluded_sector": 8,
-    "excluded_stage": 10,
+    "excluded_stage": 6,
+    "excluded_debt_or_ma": 1,
+    "excluded_not_europe": 0,
     "excluded_not_funding": 32,
-    "new_today": 0
+    "new_today": 7
   },
   "gaps": [
     {
       "name": "PitchBook",
-      "status": "not connected",
-      "why": "Needs a paid PitchBook API/export license. Motive already has a PitchBook seat (used in the weekly mv-deal-digest skill) but this MVP does not use it, to keep everything local and credential-free."
-    },
-    {
-      "name": "Crunchbase",
-      "status": "not connected",
-      "why": "Needs a Crunchbase API key (paid tier for bulk/recent-rounds access)."
-    },
-    {
-      "name": "LinkedIn",
-      "status": "intentionally not implemented",
-      "why": "Automated scraping of LinkedIn violates its Terms of Service. A compliant path would be LinkedIn's official Talent/Sales Navigator exports (manual) or a licensed data vendor such as Harmonic. Not built here; flagging so it isn't mistaken for an oversight."
-    },
-    {
-      "name": "FinSMEs",
-      "status": "blocked",
-      "why": "Feed returns HTTP 403 from this environment (bot protection). May work from a different network/IP; worth re-testing."
-    },
-    {
-      "name": "TechFundingNews",
-      "status": "blocked",
-      "why": "Feed returns HTTP 403 from this environment (bot protection)."
+      "status": "partially connected",
+      "why": "Connected via an MCP tool as of 2026-09-23, but it has no screener/filter tool (can't ask for \"all European seed deals this week\" the way Jimmy's saved search can). Used two ways here instead: pitchbook_get_news_analysis as a second discovery source (data/pitchbook_raw.json) and pitchbook_search/get_profile to verify a candidate once found (data/pitchbook_enrichment.json). Both are produced by an agent calling MCP tools by hand, not by run_daily.py itself, since that tool only exists inside a Claude Code session. See CLAUDE.md 'Two source lanes'."
     }
   ],
-  "deals": []
+  "deals": [
+    {
+      "title": "Stockholm\u2019s Spiich raises \u20ac3 million to let AI handle admin work while sales teams focus on customers",
+      "link": "https://www.eu-startups.com/2026/09/stockholms-spiich-raises-e3-million-to-let-ai-handle-admin-work-while-sales-teams-focus-on-customers/",
+      "summary": "Spiich, a Stockholm-based AI sales agent startup, has raised a \u20ac3 million Seed round. This announcement comes ten months after the company raised a \u20ac600k pre-Seed round, bringing its total funding to \u20ac3.6 million. The funding round was led by Ugly Duckling Ventures, a Copenhagen-based venture firm backing Nordic B2B software and technology companies. The [\u2026] The post Stockholm\u2019s Spiich raises \u20ac3 million to let AI handle admin work while sales teams focus on customers appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 08:26:49 +0000",
+      "categories": [
+        "Funding",
+        "Sweden Startups",
+        "Alliance VC",
+        "Ampli Ventures",
+        "Cherry Ventures",
+        "CRM",
+        "Dennis Hadzialic",
+        "Johan Torssell",
+        "Louise Lachmann",
+        "sales",
+        "Spiich Labs",
+        "ugly duckling ventures"
+      ],
+      "source": "EU-Startups",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "pre-seed",
+      "country": "Sweden",
+      "company_guess": "Stockholm\u2019s Spiich raises \u20ac3 million to let AI handle admin ",
+      "amount_usd_approx": 3.5,
+      "decision": "in_scope",
+      "id": "stockholm\u2019s-spiich-raises-\u20ac3-million-to-let-ai-handle-admin"
+    },
+    {
+      "title": "Germany\u2019s SPRIND and the Netherlands\u2019 NADI launch \u20ac40 million challenge to fast-track European AI chip design",
+      "link": "https://www.eu-startups.com/2026/09/germanys-sprind-and-the-netherlands-nadi-launch-e40-million-challenge-to-fast-track-european-ai-chip-design/",
+      "summary": "Germany\u2019s Federal Agency for Breakthrough Innovation (SPRIND) and its Dutch counterpart, the National Agency for Disruptive Innovation (NADI), have launched a joint \u20ac40 million programme to fund radical innovations in pan-European chip design. Announced today, the AI-Native Chip Design Challenge marks the first joint-funding initiative between SPRIND and NADI. It aims to cut chip development [\u2026] The post Germany\u2019s SPRIND and the Netherlands\u2019 NADI launch \u20ac40 million challenge to fast-track European AI chip design appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 07:20:28 +0000",
+      "categories": [
+        "Funding",
+        "ASML",
+        "Beau Anne-Chilla",
+        "deeptech",
+        "German Federal Agency for Breakthrough Innovation (SPRIND)",
+        "Heleen Herbert",
+        "Jano Costard",
+        "Jelle Prins",
+        "National Agency for Disruptive Innovation (NADI)",
+        "Vinnova"
+      ],
+      "source": "EU-Startups",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "unclear",
+      "country": "Germany",
+      "company_guess": "Germany\u2019s SPRIND and the Netherlands\u2019 NADI launch \u20ac40 millio",
+      "amount_usd_approx": 46.5,
+      "decision": "needs_review",
+      "id": "germany\u2019s-sprind-and-the-netherlands\u2019-nadi-launch-\u20ac40-millio"
+    },
+    {
+      "title": "Berlin-based mika raises \u20ac6 million to scale its AI-native alternative to traditional tax firms",
+      "link": "https://www.eu-startups.com/2026/09/berlin-based-mika-raises-e6-million-to-scale-its-ai-native-alternative-to-traditional-tax-firms/",
+      "summary": "mika, a Berlin-based vertical AI startup building an AI-native alternative to the traditional tax firm for Germany\u2019s small limited companies (GmbHs and UGs), has raised \u20ac6 million in a Seed funding round to support growth and the further development of the platform. The round was led by Smedvig Ventures, with participation from the Basel-based family [\u2026] The post Berlin-based mika raises \u20ac6 million to scale its AI-native alternative to traditional tax firms appeared first on EU-Startups .",
+      "published": "Wed, 23 Sep 2026 07:00:40 +0000",
+      "categories": [
+        "Funding",
+        "Germany-Startups",
+        "Agnieszka Walorska",
+        "Dennis Bemmann",
+        "dutch founders fund",
+        "Freddie Kalfayan",
+        "Henry M\u00fcssemann",
+        "Johannes Ditterich",
+        "KEEN Venture Partners",
+        "Luke Linnekuhle",
+        "Martina Pfeifer",
+        "Michael Brehm",
+        "mika",
+        "Samen Slimmer Alliance",
+        "smedvig ventures",
+        "Wecken & Cie"
+      ],
+      "source": "EU-Startups",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "seed",
+      "country": "Germany",
+      "company_guess": "Berlin-based mika raises \u20ac6 million to scale its AI-native a",
+      "amount_usd_approx": 7.0,
+      "decision": "in_scope",
+      "id": "berlin-based-mika-raises-\u20ac6-million-to-scale-its-ai-native-a"
+    },
+    {
+      "title": "German AI startup mika raises \u20ac6M to simplify accounting and tax for SMEs",
+      "link": "https://tech.eu/2026/09/23/german-ai-startup-mika-raises-eur6m-to-simplify-accounting-and-tax-for-smes/",
+      "summary": "Berlin-basedvertical AI startup mika has raised \u20ac6 million in a seed round led bypan-European investor Smedvig Ventures. Basel-based family office Wecken &Cie. (Care4 AG) also participated, alongs...",
+      "published": "Wed, 23 Sep 2026 07:15:00 +0000",
+      "categories": [
+        "Fintech",
+        "Artificial Intelligence",
+        "SaaS"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "seed",
+      "country": "Germany",
+      "company_guess": "German AI startup mika raises \u20ac6M to simplify accounting and",
+      "amount_usd_approx": 7.0,
+      "decision": "in_scope",
+      "id": "german-ai-startup-mika-raises-\u20ac6m-to-simplify-accounting-and"
+    },
+    {
+      "title": "Palma.ai raises $1.8M to bring governed AI agents to more enterprises",
+      "link": "https://tech.eu/2026/09/23/palmaai-raises-18m-to-bring-governed-ai-agents-to-more-enterprises/",
+      "summary": "Palma.ai, an enterprise platform for governing AI agents atruntime, has raised $1.8 million in pre-seed funding. The round was led byD11Z, with participation from Plug and Play Ventures, Deel, Scale N...",
+      "published": "Wed, 23 Sep 2026 07:09:34 +0000",
+      "categories": [
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "pre-seed",
+      "country": "country unconfirmed",
+      "company_guess": "Palma.ai",
+      "amount_usd_approx": 1.8,
+      "decision": "in_scope",
+      "id": "palma.ai"
+    },
+    {
+      "title": "Primo raises $8M to bring autonomous AI agents to IT operations",
+      "link": "https://tech.eu/2026/09/22/primo-raises-8m-to-bring-autonomous-ai-agents-to-it-operations/",
+      "summary": "Primo, an AI platform for managing corporate IT, has raised$8 million in a funding round led by Headline and Global Founders Capital. The company\u2019s investors also include Pennylane co-founder and CEO ...",
+      "published": "Tue, 22 Sep 2026 07:30:00 +0000",
+      "categories": [
+        "Software development",
+        "Artificial Intelligence"
+      ],
+      "source": "Tech.eu",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "unclear",
+      "country": "country unconfirmed",
+      "company_guess": "Primo",
+      "amount_usd_approx": 8.0,
+      "decision": "needs_review",
+      "id": "primo"
+    },
+    {
+      "title": "Magic AI raises \u00a38m to take its AI-powered fitness mirror to the US",
+      "link": "https://sifted.eu/articles/magic-ai-fitness-mirror-funding-round/",
+      "summary": "",
+      "published": "Wed, 23 Sep 2026 15:01:35 GMT",
+      "categories": [],
+      "source": "Sifted",
+      "sectors": [
+        "AI"
+      ],
+      "stage": "unclear",
+      "country": "country unconfirmed",
+      "company_guess": "Magic AI",
+      "amount_usd_approx": 10.7,
+      "decision": "needs_review",
+      "id": "magic-ai"
+    }
+  ]
 };
 
 </script>
@@ -333,28 +554,16 @@ window.EURO_SOURCING_DATA = {
 
   var decisions = loadDecisions();
 
-  function renderBanner() {
-    var meta = DATA.meta || {};
-    var sources = (meta.sources || []).join(", ");
-    var el = document.getElementById("banner");
-    var errNote = "";
-    if (meta.fetch_errors && meta.fetch_errors.length) {
-      errNote = " " + meta.fetch_errors.length + " source(s) failed to fetch this run: " +
-        meta.fetch_errors.map(function (e) { return e.source; }).join(", ") + ".";
-    }
-    el.innerHTML = "<b>Real data.</b> Fetched live from " + (sources || "no sources") +
-      " on " + (meta.run_date || "unknown date") + "." + errNote +
-      " Pitchbook, Crunchbase and LinkedIn are not connected, see the gaps panel below.";
-  }
-
   function renderStats() {
     var stats = DATA.stats || {};
     var cards = [
       ["scanned", "Articles scanned"],
       ["in_scope", "Matched sector + stage"],
+      ["needs_review", "Needs review (ambiguous stage)"],
       ["new_today", "New today (not seen before)"],
       ["excluded_sector", "Excluded, wrong sector"],
       ["excluded_stage", "Excluded, wrong stage"],
+      ["excluded_debt_or_ma", "Excluded, debt or M&A"],
     ];
     var html = cards.map(function (c) {
       var n = stats[c[0]];
@@ -369,12 +578,27 @@ window.EURO_SOURCING_DATA = {
   }
 
   function renderGaps() {
-    var html = (DATA.gaps || []).map(function (g) {
+    var meta = DATA.meta || {};
+    var rows = (DATA.gaps || []).map(function (g) {
       return '<div class="gap-row"><span class="name">' + escapeHtml(g.name) +
         '</span> <span class="tag status-' + slug(g.status) + '">' + escapeHtml(g.status) +
         "</span><div>" + escapeHtml(g.why) + "</div></div>";
-    }).join("");
-    document.getElementById("gaps").innerHTML = html || '<div class="empty-state">No known gaps recorded.</div>';
+    });
+    var liveSources = (meta.sources || []).join(", ");
+    if (liveSources) {
+      rows.unshift(
+        '<div class="gap-row"><span class="name">RSS feeds</span> ' +
+        '<span class="tag">live, fetched ' + escapeHtml(meta.run_date || "") + "</span><div>" +
+        escapeHtml(liveSources) + "</div></div>"
+      );
+    }
+    if (meta.fetch_errors && meta.fetch_errors.length) {
+      rows.push(
+        '<div class="gap-row"><span class="name">Fetch errors this run</span>' +
+        "<div>" + meta.fetch_errors.map(function (e) { return escapeHtml(e.source); }).join(", ") + "</div></div>"
+      );
+    }
+    document.getElementById("gaps").innerHTML = rows.join("") || '<div class="empty-state">No source info recorded.</div>';
   }
 
   function escapeHtml(s) {
@@ -387,8 +611,10 @@ window.EURO_SOURCING_DATA = {
 
   function populateSectorFilter() {
     var sectors = {};
+    var sourceNames = {};
     (DATA.deals || []).forEach(function (d) {
       (d.sectors || []).forEach(function (s) { sectors[s] = true; });
+      if (d.source) sourceNames[d.source] = true;
     });
     var sel = document.getElementById("sectorFilter");
     Object.keys(sectors).sort().forEach(function (s) {
@@ -398,6 +624,15 @@ window.EURO_SOURCING_DATA = {
       sel.appendChild(opt);
     });
     sel.addEventListener("change", renderDeals);
+
+    var srcSel = document.getElementById("sourceFilter");
+    Object.keys(sourceNames).sort().forEach(function (s) {
+      var opt = document.createElement("option");
+      opt.value = s;
+      opt.textContent = s;
+      srcSel.appendChild(opt);
+    });
+    srcSel.addEventListener("change", renderDeals);
   }
 
   function dealCardHtml(deal) {
@@ -408,9 +643,11 @@ window.EURO_SOURCING_DATA = {
     }).join("");
     return (
       '<div class="deal-card ' + cls + '" data-id="' + escapeHtml(deal.id) + '">' +
+      '<span class="source-tag">' + escapeHtml(deal.source || "unknown source") + "</span>" +
       '<div class="title"><a href="' + escapeHtml(deal.link) + '" target="_blank" rel="noopener">' +
       escapeHtml(deal.title) + "</a></div>" +
-      '<div class="deal-meta">' + escapeHtml(deal.source) + " &middot; " +
+      '<div class="deal-meta">' +
+      (deal.amount_usd_approx ? "~$" + deal.amount_usd_approx + "M &middot; " : "amount unknown &middot; ") +
       escapeHtml(deal.published || "date unknown") + " &middot; " +
       escapeHtml(deal.country) + " &middot; stage: " + escapeHtml(deal.stage) + "</div>" +
       '<div class="deal-snippet">' + escapeHtml(deal.summary) + "</div>" +
@@ -422,14 +659,28 @@ window.EURO_SOURCING_DATA = {
     );
   }
 
-  function renderDeals() {
+  function renderList(containerId, decisionValue, emptyText) {
     var filter = document.getElementById("sectorFilter").value;
+    var sourceFilter = document.getElementById("sourceFilter").value;
     var deals = (DATA.deals || []).filter(function (d) {
-      return !filter || (d.sectors || []).indexOf(filter) !== -1;
+      var matchesDecision = decisionValue ? d.decision === decisionValue
+        : d.decision !== "needs_review";
+      var matchesSector = !filter || (d.sectors || []).indexOf(filter) !== -1;
+      var matchesSource = !sourceFilter || d.source === sourceFilter;
+      return matchesDecision && matchesSector && matchesSource;
     });
-    var container = document.getElementById("dealList");
+    // Biggest known round first, so a large deal never gets buried by
+    // arriving late in feed order; unknown amounts sort last, not as 0.
+    deals.sort(function (a, b) {
+      var av = a.amount_usd_approx, bv = b.amount_usd_approx;
+      if (av == null && bv == null) return 0;
+      if (av == null) return 1;
+      if (bv == null) return -1;
+      return bv - av;
+    });
+    var container = document.getElementById(containerId);
     if (!deals.length) {
-      container.innerHTML = '<div class="empty-state">No new in-scope deals in this run.</div>';
+      container.innerHTML = '<div class="empty-state">' + emptyText + "</div>";
       return;
     }
     container.innerHTML = deals.map(dealCardHtml).join("");
@@ -444,6 +695,11 @@ window.EURO_SOURCING_DATA = {
         renderDeals();
       });
     });
+  }
+
+  function renderDeals() {
+    renderList("dealList", "in_scope", "No new in-scope deals in this run.");
+    renderList("reviewList", "needs_review", "Nothing ambiguous this run.");
   }
 
   function exportApproved() {
@@ -466,7 +722,6 @@ window.EURO_SOURCING_DATA = {
     renderDeals();
   });
 
-  renderBanner();
   renderStats();
   renderGaps();
   populateSectorFilter();

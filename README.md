@@ -30,10 +30,6 @@ anywhere in this project. Run it today and you get today's actual news.
   changed their title to Founder"), the compliant options are LinkedIn's own
   Talent/Sales Navigator exports (manual) or a licensed vendor. Worth
   raising explicitly with Tim rather than quietly building around it.
-- **FinSMEs and TechFundingNews.** Both are on the "acceptable free PR
-  sources" list the team already uses for `mv-deal-digest`, but both
-  returned HTTP 403 (bot protection) when fetched from this machine. They
-  may work from a different network. Not included in `config.SOURCES` yet.
 - **Harmonic**, which Tim mentioned as the vendor already doing this: not
   evaluated here at all. Worth comparing build-vs-buy once this MVP shows
   whether the open-source-only slice is even useful.
